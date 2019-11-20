@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <layout>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -14,7 +13,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            android:text="@{user.firstName}"
+            android:text="@{mainViewModel.getUser().firstName, default=`Place holder1`}"
             android:textSize="36sp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -24,7 +23,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            android:text="@{String.valueOf(user.age)}"
+            android:text="@{String.valueOf(mainViewModel.getUser().age),default=`Place holder2`}"
             android:textSize="36sp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_first" />
@@ -32,18 +31,14 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <data class="MainActivityBinding">
-
         <variable
             name="text1"
             type="String" />
-
         <variable
-            name="text2"
+            name="second_text"
             type="String" />
-
         <variable
-            name="user"
-            type="com.saifi369.databindingexample.model.User" />
+            name="mainViewModel"
+            type="com.saifi369.databindingexample.viewmodels.MainViewModel" />
     </data>
-
 </layout>
