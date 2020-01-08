@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
-
+<layout xmlns:bind="http://schemas.android.com/apk/res-auto">
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
@@ -18,18 +17,15 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/tv_second"
-            android:layout_width="wrap_content"
+        <include
+            android:id="@+id/included_layout"
+            layout="@layout/layout_second"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:text="@{String.valueOf(mainViewModel.getUser().age),default=`Place holder2`}"
-            android:textSize="36sp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_first" />
+            android:layout_width="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/tv_first"
+            bind:secondViewModel="@{mainViewModel}" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
     <data class="MainActivityBinding">
         <variable
             name="text1"

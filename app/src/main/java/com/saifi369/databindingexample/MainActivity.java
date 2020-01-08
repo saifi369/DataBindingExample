@@ -23,5 +23,6 @@ public class MainActivity extends AppCompatActivity {
                 .get(MainViewModel.class);
 
         binding.setMainViewModel(mViewModel);
+
     }
 }
