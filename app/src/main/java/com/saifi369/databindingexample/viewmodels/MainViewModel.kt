@@ -5,9 +5,6 @@ import androidx.lifecycle.AndroidViewModel
 import com.saifi369.databindingexample.model.User
 
 class MainViewModel(application: Application) : AndroidViewModel(application) {
-    val user: User
+    val user = User("Ali", 35)
 
-    init {
-        user = User("Ali", 35)
-    }
 }
