@@ -1,23 +1,13 @@
-package com.saifi369.databindingexample.viewmodels;
+package com.saifi369.databindingexample.viewmodels
 
-import android.app.Application;
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
+import com.saifi369.databindingexample.model.User
 
-import com.saifi369.databindingexample.model.User;
+class MainViewModel(application: Application) : AndroidViewModel(application) {
+    val user: User
 
-import androidx.annotation.NonNull;
-import androidx.lifecycle.AndroidViewModel;
-
-public class MainViewModel extends AndroidViewModel {
-
-    private User mUser;
-
-    public MainViewModel(@NonNull Application application) {
-        super(application);
-
-        mUser = new User("Ali", 35);
-    }
-
-    public User getUser() {
-        return this.mUser;
+    init {
+        user = User("Ali", 35)
     }
 }
