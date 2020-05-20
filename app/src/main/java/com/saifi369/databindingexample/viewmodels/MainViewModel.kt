@@ -2,9 +2,13 @@ package com.saifi369.databindingexample.viewmodels
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
-import com.saifi369.databindingexample.model.User
+import com.saifi369.databindingexample.model.DataProvider
+import com.saifi369.databindingexample.model.Product
 
 class MainViewModel(application: Application) : AndroidViewModel(application) {
-    val user = User("Ali", 35)
+
+    private var product = DataProvider.productList.get(0)
+
+    fun getProduct(): Product = product
 
 }
