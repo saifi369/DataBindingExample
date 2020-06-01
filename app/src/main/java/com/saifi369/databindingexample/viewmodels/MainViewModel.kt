@@ -7,7 +7,7 @@ import com.saifi369.databindingexample.model.Product
 
 class MainViewModel(application: Application) : AndroidViewModel(application) {
 
-    private var product = DataProvider.productList.get(1)
+    private var product = DataProvider.productList.get(5)
 
     fun getProduct(): Product = product
 
