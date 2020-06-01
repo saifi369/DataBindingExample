@@ -11,6 +11,7 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:src="@drawable/sale_image"
+            android:visibility="@{product.salePrice >0 ? View.VISIBLE : View.GONE}"
             app:layout_constraintBottom_toTopOf="@id/iv_product"
             app:layout_constraintLeft_toLeftOf="@id/iv_product"
             app:layout_constraintTop_toTopOf="@+id/iv_product" />
@@ -66,7 +67,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="50dp"
-            android:text="@{String.valueOf(product.totalRatings)}"
+            android:text="@{StringUtils.Companion.getTotalRatings(product.totalRatings)}"
             app:layout_constraintBottom_toBottomOf="@id/rating_bar"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="@id/rating_bar" />
@@ -80,7 +81,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
             android:gravity="center"
-            android:text="@{String.valueOf(product.price)}"
+            android:text="@{StringUtils.Companion.getPrice(product.price)}"
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/iv_product" />
@@ -102,9 +103,29 @@
 
     <data>
 
+        <import type="com.saifi369.databindingexample.model.Product" />
+
+        <import type="com.saifi369.databindingexample.utils.StringUtils" />
+
+        <import
+            alias="AndroidView"
+            type="android.view.View" />
+
+        <import
+            alias="CustomView"
+            type="com.test.custom.View" />
+
+        <import type="java.util.List" />
+
         <variable
             name="product"
-            type="com.saifi369.databindingexample.model.Product" />
+            type="Product" />
+
+        <variable
+            name="view"
+            type="AndroidView" />
+
     </data>
+
 </layout>
 
