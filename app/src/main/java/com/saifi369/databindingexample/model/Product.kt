@@ -1,6 +1,7 @@
 package com.saifi369.databindingexample.model
 
 data class Product(
+        val itemId: String,
         val name: String,
         val description: String,
         val price: Double,

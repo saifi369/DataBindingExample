@@ -11,7 +11,7 @@ object DataProvider {
     private fun addProduct(itemId: String, name: String, description: String, price: Double,
                            salePrice: Double, rating: Float, totalRatings: Int) {
 
-        val item = Product(name, description, price, salePrice, rating, totalRatings, itemId)
+        val item = Product(itemId, name, description, price, salePrice, rating, totalRatings, "$itemId.png")
         productList.add(item)
         productMap[itemId] = item
     }
@@ -68,6 +68,6 @@ object DataProvider {
         addProduct("vest101",
                 "Thermal vest",
                 "Our thermal vest, made from organic bamboo with recycled plastic down filling, is a favorite of both men and women. You’ll help the environment, and have a wear-easy piece for many occasions.",
-                95.0, 0.0, 5.0F, 127)
+                95.0, 0.0, 4.5F, 127)
     }
 }
