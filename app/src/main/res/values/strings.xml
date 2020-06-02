@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">Data Binding Example</string>
+
+    <string name="price">%s$</string>
+    <string name="total_rating">(%d)</string>
+
+    <string-array name="category">
+        <item>Sale</item>
+        <item>Cheap</item>
+        <item>Costly</item>
+    </string-array>
 </resources>

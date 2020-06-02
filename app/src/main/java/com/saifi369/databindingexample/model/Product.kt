@@ -9,4 +9,11 @@ data class Product(
         val rating: Float,
         val totalRatings: Int,
         val image: String
-)
+) {
+
+    val priceMap = mapOf<String, Double>(
+            "price" to price,
+            "sale_price" to salePrice
+    )
+
+}

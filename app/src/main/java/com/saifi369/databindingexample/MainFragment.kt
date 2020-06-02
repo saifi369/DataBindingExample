@@ -34,8 +34,6 @@ class MainFragment : Fragment() {
 
     private fun setData(rootView: View, product: Product) {
 
-        rootView.iv_product_sale.visibility = if (product.salePrice > 0.0) View.VISIBLE else View.GONE
-
         rootView.iv_product.setImageBitmap(getBitmapFromAssets(product.image))
 
     }

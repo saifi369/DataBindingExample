@@ -1,17 +1,15 @@
 package com.saifi369.databindingexample.utils
 
-class StringUtils {
+object StringUtils {
 
-    companion object {
+    @JvmStatic
+    fun getTotalRatings(totalRating: Int): String {
+        return "($totalRating)"
+    }
 
-        fun getTotalRatings(totalRatings: Int): String {
-            return "($totalRatings)"
-        }
-
-        fun getPrice(price: Double): String {
-            return "$price$"
-        }
-
+    @JvmStatic
+    fun getFormattedPrice(price: Double): String {
+        return "$price$"
     }
 
 }
