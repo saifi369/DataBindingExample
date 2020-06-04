@@ -7,6 +7,19 @@
         android:layout_height="match_parent">
 
         <ImageView
+            android:id="@+id/iv_product"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            app:errorImage="@{product.errorImage}"
+            app:imageUrl="@{`https://i.redd.it/muklx2k14v251.jpg`}"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_name" />
+
+        <ImageView
             android:id="@+id/iv_product_sale"
             android:layout_width="100dp"
             android:layout_height="100dp"
@@ -16,17 +29,18 @@
             app:layout_constraintLeft_toLeftOf="@id/iv_product"
             app:layout_constraintTop_toTopOf="@+id/iv_product" />
 
-        <ImageView
-            android:id="@+id/iv_product"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            android:src="@drawable/vest101"
-            app:layout_constraintDimensionRatio="1:1"
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@{product.name}"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textSize="30sp"
+            android:textStyle="bold"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_name" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <RatingBar
             android:id="@+id/rating_bar"
@@ -67,7 +81,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="50dp"
-            android:text="@{@string/total_rating(product.totalRatings)}"
+            app:numberText="@{product.totalRatings}"
             app:layout_constraintBottom_toBottomOf="@id/rating_bar"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="@id/rating_bar" />
@@ -81,37 +95,25 @@
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
             android:gravity="center"
-            android:text="@{}"
+            app:priceText="@{product.price}"
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/iv_product" />
 
-        <TextView
-            android:id="@+id/tv_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="@{product.name}"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:textSize="30sp"
-            android:textStyle="bold"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <data>
-
         <import type="com.saifi369.databindingexample.model.Product" />
         <import type="com.saifi369.databindingexample.utils.StringUtils" />
-
         <import type="android.view.View" />
 
         <variable
             name="product"
             type="Product" />
     </data>
+
 
 </layout>
 

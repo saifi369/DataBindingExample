@@ -1,5 +1,6 @@
 package com.saifi369.databindingexample.model
 
+import com.saifi369.databindingexample.R
 import java.util.*
 
 object DataProvider {
@@ -11,7 +12,8 @@ object DataProvider {
     private fun addProduct(itemId: String, name: String, description: String, price: Double,
                            salePrice: Double, rating: Float, totalRatings: Int) {
 
-        val item = Product(itemId, name, description, price, salePrice, rating, totalRatings, "$itemId.png")
+        val item = Product(itemId, name, description, price, salePrice, rating, totalRatings, "$itemId.png",
+                R.drawable.error_image, R.drawable.clothes_placeholder)
         productList.add(item)
         productMap[itemId] = item
     }
