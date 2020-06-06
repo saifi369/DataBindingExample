@@ -9,6 +9,7 @@ import com.bumptech.glide.request.RequestOptions
 import com.saifi369.databindingexample.R
 import java.io.IOException
 import java.text.NumberFormat
+import java.util.*
 
 @BindingAdapter("imageName")
 fun setImageFromAssets(view: ImageView, fileName: String) {
@@ -22,73 +23,38 @@ fun setImageFromAssets(view: ImageView, fileName: String) {
 
 }
 
-@BindingAdapter("imageUrl")
-fun loadImageFromInternet(view: ImageView, imageUrl: String) {
-
-    Glide.with(view.context)
-            .load(imageUrl)
-            .into(view)
-
-}
-
-@BindingAdapter("imageUrl", "placeholderImage")
-fun loadImageFromInternet(view: ImageView, imageUrl: String, placeholderImage: String) {
-
-    val requestOptions: RequestOptions = RequestOptions()
-            .placeholder(R.drawable.clothes_placeholder)
-
-    Glide.with(view.context)
-            .setDefaultRequestOptions(requestOptions)
-            .load(imageUrl)
-            .into(view)
-
-}
-
-@BindingAdapter("imageUrl", "placeholderImage", "errorImage")
+@BindingAdapter(value = ["imageUrl", "placeholderImage", "errorImage"], requireAll = false)
 fun loadImageFromInternet(view: ImageView, imageUrl: String, placeholderImage: Boolean, errorImage: Boolean) {
 
     var requestOptions: RequestOptions = RequestOptions()
 
-    if (placeholderImage) {
+    if (placeholderImage)
         requestOptions.placeholder(R.drawable.clothes_placeholder)
-    }
-    if (errorImage) {
-        requestOptions.error(R.drawable.error_image)
-    }
+
+    if (errorImage)
+        requestOptions.placeholder(R.drawable.error_image)
 
     Glide.with(view.context)
             .setDefaultRequestOptions(requestOptions)
             .load(imageUrl)
             .into(view)
-
-}
-
-@BindingAdapter("imageUrl", "errorImage")
-fun loadImageFromInternetWithErrorImage(view: ImageView, imageUrl: String, errorImage: Int) {
-
-    val requestOptions: RequestOptions = RequestOptions()
-            .error(errorImage)
-
-    Glide.with(view.context)
-            .setDefaultRequestOptions(requestOptions)
-            .load(imageUrl)
-            .into(view)
-
-}
-
-@BindingAdapter("numberText")
-fun setNumber(view: TextView, value: Int) {
-
-    view.text = "($value)"
 
 }
 
 @BindingAdapter("priceText")
-fun setPrice(view: TextView, value: Double) {
+fun setPriceText(view: TextView, price: Double) {
+    val formatter = NumberFormat.getCurrencyInstance(Locale.US)
 
-    val formatter = NumberFormat.getCurrencyInstance()
-    val text = "${formatter.format(value)} / each"
-
-    view.text = text
-
+    view.text = "Rs. $price / each"
 }
+
+@BindingAdapter("ratingText")
+fun setTotalRatingText(view: TextView, rating: Int) {
+    view.text = "($rating)"
+}
+
+@BindingAdapter("android:text")
+fun setTextViewText(view: TextView, text: Double) {
+    view.text = "$text"
+}
+
