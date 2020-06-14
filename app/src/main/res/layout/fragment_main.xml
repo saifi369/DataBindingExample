@@ -11,7 +11,7 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:src="@drawable/sale_image"
-            android:visibility="@{productViewModel.product.salePrice > 0.0 ? View.VISIBLE : View.GONE}"
+            android:visibility="@{product.salePrice > 0.0 ? View.VISIBLE : View.GONE}"
             app:layout_constraintBottom_toTopOf="@id/iv_product"
             app:layout_constraintLeft_toLeftOf="@id/iv_product"
             app:layout_constraintTop_toTopOf="@+id/iv_product" />
@@ -22,7 +22,7 @@
             android:layout_height="0dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
-            app:imageName="@{productViewModel.product.image}"
+            app:imageName="@{product.image}"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -36,7 +36,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
-            android:rating="@{productViewModel.product.rating}"
+            android:rating="@{product.rating}"
             app:layout_constraintBottom_toBottomOf="@+id/tv_price"
             app:layout_constraintEnd_toStartOf="@id/tv_num_rating"
             app:layout_constraintTop_toBottomOf="@+id/iv_product" />
@@ -58,7 +58,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                android:text="@{productViewModel.product.description}"
+                android:text="@{product.description}"
                 android:textSize="20sp" />
 
         </ScrollView>
@@ -68,7 +68,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="@{productViewModel.product.name}"
+            android:text="@{product.name}"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textSize="30sp"
             android:textStyle="bold"
@@ -81,7 +81,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="50dp"
-            app:ratingText="@{productViewModel.product.totalRatings}"
+            app:ratingText="@{product.totalRatings}"
             app:layout_constraintBottom_toBottomOf="@id/rating_bar"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="@id/rating_bar" />
@@ -95,12 +95,10 @@
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
             android:gravity="center"
-            app:priceText="@{productViewModel.product.price}"
+            app:priceText="@{product.price}"
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/iv_product" />
-
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -109,8 +107,8 @@
         <import type="android.view.View" />
 
         <variable
-            name="productViewModel"
-            type="com.saifi369.databindingexample.model.ProductViewModel" />
+            name="product"
+            type="Product" />
     </data>
 
 </layout>
