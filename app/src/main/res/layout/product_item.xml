@@ -1,28 +1,29 @@
-<?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:onClick="@{()->listener.onProductClick(product)}"
+        android:paddingBottom="16dp">
 
         <ImageView
             android:id="@+id/iv_product_sale"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:src="@drawable/sale_image"
-            android:visibility="@{productViewModel.product.salePrice > 0.0 ? View.VISIBLE : View.GONE}"
+            android:visibility="@{product.salePrice > 0.0 ? View.VISIBLE : View.GONE}"
             app:layout_constraintBottom_toTopOf="@id/iv_product"
             app:layout_constraintLeft_toLeftOf="@id/iv_product"
             app:layout_constraintTop_toTopOf="@+id/iv_product" />
 
         <ImageView
             android:id="@+id/iv_product"
+            imageName="@{product.image}"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
-            app:imageName="@{productViewModel.product.image}"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -36,42 +37,21 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
-            android:rating="@{productViewModel.product.rating}"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_price"
-            app:layout_constraintEnd_toStartOf="@id/tv_num_rating"
-            app:layout_constraintTop_toBottomOf="@+id/iv_product" />
-
-
-        <ScrollView
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_below="@+id/tv_price"
-            android:layout_margin="8dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_price"
-            app:layout_constraintVertical_bias="0">
-
-            <TextView
-                android:id="@+id/tv_description"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:text="@{productViewModel.product.description}"
-                android:textSize="20sp" />
-
-        </ScrollView>
+            android:rating="@{product.rating}"
+            app:layout_constraintLeft_toLeftOf="@id/tv_price"
+            app:layout_constraintRight_toRightOf="@+id/tv_price"
+            app:layout_constraintTop_toBottomOf="@+id/tv_price" />
 
         <TextView
             android:id="@+id/tv_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="@{productViewModel.product.name}"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:textSize="30sp"
+            android:layout_marginTop="8dp"
+            android:text="@{product.name}"
+            android:textAlignment="center"
+            android:textSize="24sp"
             android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/iv_product"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -80,38 +60,39 @@
             android:id="@+id/tv_num_rating"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="50dp"
-            app:ratingText="@{productViewModel.product.totalRatings}"
+            android:layout_marginStart="8dp"
             app:layout_constraintBottom_toBottomOf="@id/rating_bar"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="@id/rating_bar" />
+            app:layout_constraintLeft_toRightOf="@id/rating_bar"
+            app:layout_constraintTop_toTopOf="@id/rating_bar"
+            app:ratingText="@{product.totalRatings}" />
 
         <TextView
             android:id="@+id/tv_price"
+            priceText="@{product.price}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/tv_name"
-            android:layout_marginStart="50dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
             android:gravity="center"
-            app:priceText="@{productViewModel.product.price}"
             android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/iv_product" />
-
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <data>
-        <import type="com.saifi369.databindingexample.model.Product" />
+
         <import type="android.view.View" />
 
         <variable
-            name="productViewModel"
-            type="com.saifi369.databindingexample.model.ProductViewModel" />
-    </data>
+            name="product"
+            type="com.saifi369.databindingexample.model.Product" />
 
+        <variable
+            name="listener"
+            type="com.saifi369.databindingexample.adapters.ProductItemListener" />
+    </data>
 </layout>
 
