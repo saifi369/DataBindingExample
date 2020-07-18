@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
 import com.saifi369.databindingexample.BR
+import com.saifi369.databindingexample.IMainActivity
 import com.saifi369.databindingexample.databinding.ProductItemBinding
 import com.saifi369.databindingexample.model.Product
 
@@ -24,6 +25,7 @@ class ProductsAdapter(private val context: Context, private val dataList: List<P
         val product = dataList[position]
 
         holder.itemBinding.setVariable(BR.productItem, product)
+        holder.itemBinding.setVariable(BR.listener, context as IMainActivity)
         holder.itemBinding.executePendingBindings()
 
     }
@@ -32,5 +34,4 @@ class ProductsAdapter(private val context: Context, private val dataList: List<P
 
     class BindingViewHolder(val itemBinding: ViewDataBinding)
         : RecyclerView.ViewHolder(itemBinding.root)
-
 }

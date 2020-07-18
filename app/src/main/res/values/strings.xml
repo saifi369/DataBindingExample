@@ -4,6 +4,8 @@
     <string name="price">%s$</string>
     <string name="total_rating">(%d)</string>
 
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- TODO: Remove or change this placeholder text -->
     <string-array name="category">
         <item>Sale</item>
         <item>Cheap</item>

@@ -1,6 +1,9 @@
 package com.saifi369.databindingexample.model
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class Product(
         val itemId: String,
         val name: String,
@@ -11,10 +14,4 @@ data class Product(
         val totalRatings: Int,
         val image: String,
         val errorImage: Int,
-        val placeholderImage: Int) {
-
-    val priceMap = mapOf<String, Double>(
-            "price" to price,
-            "sale_price" to salePrice
-    )
-}
+        val placeholderImage: Int) : Parcelable
