@@ -2,18 +2,18 @@ package com.saifi369.databindingexample
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
+import com.saifi369.databindingexample.databinding.ActivityMainBinding
+import com.saifi369.databindingexample.model.DataProvider
 
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main_events)
+        val binding: ActivityMainBinding =
+                DataBindingUtil.setContentView(this, R.layout.activity_main)
 
-        val fragment = MainFragment()
+        binding.dataList = DataProvider.productList
 
-        supportFragmentManager
-                .beginTransaction()
-                .add(R.id.fragment_container, fragment)
-                .commit()
     }
 }

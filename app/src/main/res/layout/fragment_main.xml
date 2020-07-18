@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:onLongClick="@{(view) -> view.isVisible()?  listener.runCode(product) : void}">
+        android:layout_height="match_parent">
 
         <ImageView
             android:id="@+id/iv_product_sale"
@@ -104,15 +102,11 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <data>
-
         <import type="com.saifi369.databindingexample.model.Product" />
-
         <import type="android.view.View" />
-
         <variable
             name="product"
             type="Product" />
-
         <variable
             name="listener"
             type="com.saifi369.databindingexample.MainFragment" />
